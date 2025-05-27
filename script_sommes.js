@@ -16,9 +16,11 @@ function reset()
       {
         const bouton = td.querySelector( ".signe" );
         const input  = td.querySelector( "input" );
+        const parag  = td.querySelector( ".textesigne" );
         
         bouton.textContent = "+";
         input.value = "";
+        parag.textContent = "";
       }
     for ( td of document.querySelectorAll( `.${TITRE_TOTAL}` ) )
       {

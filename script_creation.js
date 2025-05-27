@@ -94,10 +94,14 @@ function creer_titre( titre )
         button.setAttribute( "class", "signe" );
         button.textContent = "+";
         
+        const parag = document.createElement( "p" );
+        parag.setAttribute( "class", "textesigne" );
+        
         const input = document.createElement( "input" );
         input.setAttribute( "type", "number" );
         
         td.appendChild( button );
+        td.appendChild( parag );
         td.appendChild( input );
         tr.appendChild( td );
       }

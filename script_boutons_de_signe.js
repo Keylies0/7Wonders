@@ -7,12 +7,18 @@ const td_liste = document.querySelectorAll( ".score" );
  * @param le bouton
  * @param l'input
  */
-function changer_signe( bouton, input )
+function changer_signe( bouton, input, parag )
   {
     if ( bouton.textContent === "+" )
+      {
         bouton.textContent = "‒";
+        parag.textContent = "‒";
+      }
     else
+      {
         bouton.textContent = "+";
+        parag.textContent = "";
+      }
   }
 
 /**
@@ -20,10 +26,10 @@ function changer_signe( bouton, input )
  * @param le bouton
  * @param l'input
  */
-function disparaitre( bouton, input )
+function disparaitre( bouton, input, parag )
   {
     bouton.style.display = "none";
-    input.style.width = "100%";
+    parag.style.display = "";
   }
 
 /**
@@ -31,10 +37,10 @@ function disparaitre( bouton, input )
  * @param le bouton
  * @param l'input
  */
-function apparaitre( bouton, input )
+function apparaitre( bouton, input, parag )
   {
     bouton.style.display = "";
-    input.style.width = "70%";
+    parag.style.display = "none";
   }
 
 
@@ -44,24 +50,25 @@ for ( td of td_liste )
   {
     const button = td.querySelector( ".signe" );
     const input  = td.querySelector( "input" );
-    disparaitre( button, input );
+    const parag  = td.querySelector( ".textesigne" );
+    disparaitre( button, input, parag );
     
     button.addEventListener(
         "pointerdown",
         (e) => { 
             e.preventDefault();
             input.focus();
-            changer_signe( button, input );
+            changer_signe( button, input, parag );
         }
     );
     
     input.addEventListener(
         "focus",
-        () => { apparaitre( button, input ); }
+        () => { apparaitre( button, input, parag ); }
     );
     
     input.addEventListener(
         "blur",
-        () => { disparaitre( button, input ); }
+        () => { disparaitre( button, input, parag ); }
     );
   }
